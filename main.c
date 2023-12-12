@@ -1,15 +1,18 @@
 #include <stdio.h>
 
 int main() {
-   long  int i;
-   long  int tmp[500];
-   long int sum = 0;
-    tmp[0] = 1;
-    tmp[1] = 2;
-    for(i = 2; i<91; i++) {// i < (Fibonacci number - 1)
-        tmp[i] = tmp[i - 2] + tmp[i - 1];
-            if(tmp[i] % 2 == 0 && tmp[i] < 4000000) {
-                sum = sum + tmp[i];
+long int sum;
+long int current = 1;
+long int last = 1;
+long int tmp;
+// 1 2 3 5 8 13 21 34 55 89
+    for(int i = 2; i < 100; i++) {// i < (Fibonacci number - 1)
+        printf("\n%ld+%ld=%ld", last, current, last + current);
+        tmp = current;
+        current = current + last;
+        last = tmp;
+            if(current % 2 == 0 &&current < 4000000){
+                sum = sum + current;
         }
     }
     printf("Sum: %ld", sum + 2);
